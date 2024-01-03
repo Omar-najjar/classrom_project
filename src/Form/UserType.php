@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Classe;
 use App\Entity\Cours;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -20,7 +21,15 @@ class UserType extends AbstractType
             ->add('password')
             ->add('role')
             ->add('tel')
-
+            ->add('cours', EntityType::class, [
+                'class' => Cours::class,
+'choice_label' => 'id',
+'multiple' => true,
+            ])
+            ->add('classe', EntityType::class, [
+                'class' => Classe::class,
+'choice_label' => 'id',
+            ])
         ;
     }
 
