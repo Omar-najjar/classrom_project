@@ -37,6 +37,9 @@ class User
     #[ORM\ManyToMany(targetEntity: Cours::class, mappedBy: 'personne')]
     private Collection $cours;
 
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?Classe $classe = null;
+
     public function __construct()
     {
         $this->cours = new ArrayCollection();
@@ -142,6 +145,18 @@ class User
         if ($this->cours->removeElement($cour)) {
             $cour->removePersonne($this);
         }
+
+        return $this;
+    }
+
+    public function getClasse(): ?Classe
+    {
+        return $this->classe;
+    }
+
+    public function setClasse(?Classe $classe): static
+    {
+        $this->classe = $classe;
 
         return $this;
     }
