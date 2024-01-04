@@ -9,8 +9,6 @@ parameters:
 services:
 
 
-
-
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
@@ -30,3 +28,13 @@ services:
     App\Service\FileUploader:
         arguments:
             $targetDirectory: '%brochures_directory%'
+security:
+    providers:
+        users:
+            entity:
+                # the class of the entity that represents users
+                class: 'App\Entity\User'
+                # the property to query by - e.g. email, username, etc
+                property: 'email'
+
+                        

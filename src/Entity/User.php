@@ -6,10 +6,15 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-class User
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -28,8 +33,11 @@ class User
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $role = null;
+
+    #[ORM\Column(type: 'json')]
+    private $role = [];
+
+
 
     #[ORM\Column(length: 255)]
     private ?string $tel = null;
@@ -39,6 +47,9 @@ class User
 
     #[ORM\ManyToOne(inversedBy: 'users')]
     private ?Classe $classe = null;
+
+    #[ORM\Column(type: 'boolean')]
+    private $isVerified = false;
 
     public function __construct()
     {
@@ -98,17 +109,7 @@ class User
         return $this;
     }
 
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
 
-    public function setRole(string $role): static
-    {
-        $this->role = $role;
-
-        return $this;
-    }
 
     public function getTel(): ?string
     {
@@ -159,5 +160,62 @@ class User
         $this->classe = $classe;
 
         return $this;
+    }
+
+
+
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+
+    public function getRoles(): array
+    {
+        $role = $this->role;
+        // guarantee every user at least has ROLE_USER
+        $role[] = 'ROLE_USER';
+
+        return array_unique($role);
+    }
+
+    public function setRoles(array $role): self
+    {
+        $this->role = $role;
+
+        return $this;
+    }
+
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+
+
+    public function getUsername(): string
+    {
+        return (string) $this->email;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): static
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
+    }
+    public function supportsClass($class)
+    {
+        return User::class === $class;
     }
 }
