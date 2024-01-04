@@ -17,16 +17,11 @@ class CoursType extends AbstractType
         $builder
             ->add('nom')
             ->add('fichier')
-            ->add('personne', EntityType::class, [
-                'class' => User::class,
-'choice_label' => 'id',
-'multiple' => true,
-            ])
+
             ->add('classe', EntityType::class, [
                 'class' => Classe::class,
-'choice_label' => 'id',
-            ])
-        ;
+                'choice_label' => 'id',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
