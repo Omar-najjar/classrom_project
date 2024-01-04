@@ -20,17 +20,7 @@ class UserType extends AbstractType
             ->add('email')
             ->add('password')
             ->add('role')
-            ->add('tel')
-            ->add('cours', EntityType::class, [
-                'class' => Cours::class,
-'choice_label' => 'id',
-'multiple' => true,
-            ])
-            ->add('classe', EntityType::class, [
-                'class' => Classe::class,
-'choice_label' => 'id',
-            ])
-        ;
+            ->add('tel');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

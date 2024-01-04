@@ -14,8 +14,7 @@
 					<a href="javascript:void(0)" class="icon menu_toggle mr-3">
 						<i class="fa  fa-align-left"></i>
 					</a>
-					<h1 class="page-title">Edit Cours</h1>
-
+					<h1 class="page-title">Create new classe</h1>
 				</div>
 				<div class="right">
 					<div class="input-icon xs-hide mr-4">
@@ -24,94 +23,7 @@
 							<i class="fe fe-search"></i>
 						</span>
 					</div>
-					<!-- notification flex -->
-					<div class="notification d-flex">
-						<div class="dropdown d-flex">
-							<a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2" data-toggle="dropdown">
-								<i class="fa fa-envelope"></i>
-								<span class="badge badge-success nav-unread"></span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-								<ul class="right_chat list-unstyled w350 p-0">
-									<li class="online">
-										<a href="javascript:void(0);" class="media">
-											<img class="media-object" src="{{ asset('AdminPanel/asset/images/xs/avatar4.jpg')}}" alt="">
-											<div class="media-body">
-												<span class="name">Donald Gardner</span>
-												<div class="message">It is a long established fact that a reader</div>
-												<small>11 mins ago</small>
-												<span class="badge badge-outline status"></span>
-											</div>
-										</a>
-									</li>
-									<li class="online">
-										<a href="javascript:void(0);" class="media">
-											<img class="media-object " src="{{ asset('AdminPanel/asset/images/xs/avatar5.jpg')}}" alt="">
-											<div class="media-body">
-												<span class="name">Wendy Keen</span>
-												<div class="message">There are many variations of passages of Lorem Ipsum</div>
-												<small>18 mins ago</small>
-												<span class="badge badge-outline status"></span>
-											</div>
-										</a>
-									</li>
-									<li class="offline">
-										<a href="javascript:void(0);" class="media">
-											<img class="media-object " src="{{ asset('AdminPanel/asset/images/xs/avatar2.jpg')}}" alt="">
-											<div class="media-body">
-												<span class="name">Matt Rosales</span>
-												<div class="message">Contrary to popular belief, Lorem Ipsum is not simply</div>
-												<small>27 mins ago</small>
-												<span class="badge badge-outline status"></span>
-											</div>
-										</a>
-									</li>
-									<li class="online">
-										<a href="javascript:void(0);" class="media">
-											<img class="media-object " src="{{ asset('AdminPanel/asset/images/xs/avatar3.jpg')}}" alt="">
-											<div class="media-body">
-												<span class="name">Phillip Smith</span>
-												<div class="message">It has roots in a piece of classical Latin literature from 45 BC</div>
-												<small>33 mins ago</small>
-												<span class="badge badge-outline status"></span>
-											</div>
-										</a>
-									</li>
-								</ul>
-								<div class="dropdown-divider"></div>
-								<a href="javascript:void(0)" class="dropdown-item text-center text-muted-dark readall">Mark all as read</a>
-							</div>
-						</div>
-						<div class="dropdown d-flex">
-							<a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2" data-toggle="dropdown">
-								<i class="fa fa-user"></i>
-							</a>
-							<div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-								<a class="dropdown-item" href="page-profile.html">
-									<i class="dropdown-icon fe fe-user"></i>
-									Profile</a>
-								<a class="dropdown-item" href="app-setting.html">
-									<i class="dropdown-icon fe fe-settings"></i>
-									Settings</a>
-								<a class="dropdown-item" href="javascript:void(0)">
-									<span class="float-right">
-										<span class="badge badge-primary">6</span>
-									</span>
-									<i class="dropdown-icon fe fe-mail"></i>
-									Inbox</a>
-								<a class="dropdown-item" href="javascript:void(0)">
-									<i class="dropdown-icon fe fe-send"></i>
-									Message</a>
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="javascript:void(0)">
-									<i class="dropdown-icon fe fe-help-circle"></i>
-									Need help?</a>
-								<a class="dropdown-item" href="login.html">
-									<i class="dropdown-icon fe fe-log-out"></i>
-									Sign out</a>
-							</div>
-						</div>
-					</div>
+
 				</div>
 			</div>
 			<!-- page header end -->
@@ -153,7 +65,6 @@
 
 						{{ include('cours/_form.html.twig', {'button_label': 'Update'}) }}
 
-						<a href="{{ path('app_cours_index') }}">back to list</a>
 
 						{{ include('cours/_delete_form.html.twig') }}
 
