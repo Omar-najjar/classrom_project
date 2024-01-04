@@ -22,6 +22,16 @@ class CoursController extends AbstractController
         ]);
     }
 
+
+
+    #[Route('/coursAdmin', name: 'app_cours_admin', methods: ['GET'])]
+    public function indexadmin(CoursRepository $coursRepository): Response
+    {
+        return $this->render('cours/index.html copy.twig', [
+            'cours' => $coursRepository->findAll(),
+        ]);
+    }
+
     #[Route('/new', name: 'app_cours_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -71,7 +81,7 @@ class CoursController extends AbstractController
     #[Route('/{id}', name: 'app_cours_delete', methods: ['POST'])]
     public function delete(Request $request, Cours $cour, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$cour->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $cour->getId(), $request->request->get('_token'))) {
             $entityManager->remove($cour);
             $entityManager->flush();
         }
